@@ -1,0 +1,187 @@
+<html>
+<head>
+    <link href="style/invoice.css" rel="stylesheet"/>
+</head>
+<body id="body">
+<header>
+    <address>
+        <img alt="logo" src="{{embedable_image "images/WPE-logo.png"}}">
+
+        <p>Version 3<br />
+            Address 1<br />
+            Address 2<br />
+            City, ST 555555</p>
+    </address>
+
+    <table class="meta">
+        <tr>
+            <th>Invoice Number:</th>
+            <td>{{invoice.invoiceNumber}}</td>
+        </tr>
+        <tr>
+            <th>Invoice Date:</th>
+            <td>{{invoice.billCycleRun.openDate}}</td>
+        </tr>
+        <tr>
+            <th>Account Number:</th>
+            <td>{{invoice.billingAccount.accountNum}}</td>
+        </tr>
+        <tr>
+            <th>Terms:</th>
+            <td>&nbsp;{{invoice.billingAccount.term}}</td>
+        </tr>
+        <tr>
+            <th>Chassis Rental Period:</th>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</header>
+
+<article>
+    <h1>Recipient</h1>
+    <address>
+        <p><strong>Expedited Freightways, LLC</strong><br />
+            1214 Progressive Drive<br />
+            Suite 101<br />
+            Chesapeake, VA 23320<br />
+            UNITED STATES</p>
+
+        <p><strong>Questions about your invoice?</strong><br />
+            Email: finance@wpengine.com<br />
+            Telephone: 1-510-844-3000 (option 5)<br />
+            For further information please refer to the NYK Motor Carrier Agreement located in your ChassisManager
+            Account Profile under Terms and Conditions.</p>
+
+        <p><strong>For Electronic Funds Transfer:</strong><br />
+            Bank Name: Bank of Tokyo Mitsubishi New York,<br />
+            Beneficiary Name: NY NYK Line (NA) Inc.<br />
+            Routing Number: 026009632<br />
+            Account Number: 310067839</p>
+    </address>
+    <table class="title">
+        <tr>
+            <th>Statement of Account Summary</th>
+        </tr>
+    </table>
+    <table class="balance">
+        <tr>
+            <th>Previous Balance</th>
+            <td><span data-prefix>$</span>1,777.79</td>
+        </tr>
+        <tr>
+            <th>Payments & Credits Applied</th>
+            <td><span data-prefix>$</span>0.00</td>
+        </tr>
+        <tr>
+            <th>Payment Adjustments</th>
+            <td><span data-prefix>$</span>0.00</td>
+        </tr>
+        <tr>
+            <th>Total Current Invoice Activity</th>
+            <td><span data-prefix>$</span>629.31</td>
+        </tr>
+        <tr class="total">
+            <th>Balance</th>
+            <td><span data-prefix>$</span>2,407.10</td>
+        </tr>
+    </table>
+    <table class="title">
+        <tr>
+            <th>Current Invoice Activity</th>
+        </tr>
+    </table>
+    <table class="balance">
+        <tr>
+            <th>Chassis Rental Charges</th>
+            <td><span data-prefix>$</span>580.00</td>
+        </tr>
+        <tr>                                                                  a
+            <th>Other Charges</th>
+            <td><span data-prefix>$</span>0.00</td>
+        </tr>
+        <tr>
+            <th>Taxes</th>
+            <td><span data-prefix>$</span>49.31</td>
+        </tr>
+        <tr class="total">
+            <th>Total Current Charges Due</th>
+            <td><span data-prefix>$</span>629.31</td>
+        </tr>
+    </table>
+    <p class="payment-note">Payment due no later than 02/05/14</p>
+</article>
+
+<aside>
+    <h1>Remittance</h1>
+    <header>
+        <address>
+            <p>Expedited Freightways, LLC<br />
+                1214 Progressive Drive<br />
+                Suite 101<br />
+                Chesapeake, VA 23320<br />
+                UNITED STATES<br />
+                &nbsp;</p>
+            <img alt="logo" src="{{embedable_image "images/logo_tract.png"}}">
+        </address>
+
+        <table class="meta">
+            <tr>
+                <th>Invoice Number:</th>
+                <td>{{invoice.invoiceNumber}}</td>
+            </tr>
+            <tr>
+                <th>Invoice Date:</th>
+                <td>{{invoice.billCycleRun.openDate}}</td>
+            </tr>
+            <tr>
+                <th>Account Number:</th>
+                <td>{{invoice.billingAccount.accountNum}}</td>
+            </tr>
+            <tr>
+                <th>Total Due:</th>
+                <td>&nbsp;{{invoice.billingAccount.term}}</td>
+            </tr>
+            <tr>
+                <th>Amount Paid:</th>
+                <th>&nbsp;</th>
+            </tr>
+        </table>
+    </header>
+
+    <article>
+        <p class="remit-note">Remit with this stub to:</p>
+        <address>
+            <p class="remit">
+                Generac<br />
+                Address 1<br />
+                Address 2<br />
+                City, ST 555555</p>
+        </address>
+    </article>
+</aside>
+
+<div style="page-break-inside:auto;"></div>
+
+<table class="general">
+    <tr>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Unit Amount</th>
+        <th>Line Item Type</th>
+    </tr>
+    {{#each invoice.invoiceItems.invoiceItem}}
+        <tr>
+            <td>{{type}}</td>
+            <td>{{amount}}</td>
+            <td>{{quantity}}</td>
+            <td>{{unitAmount}}</td>
+            <td>{{#if LineItemType}}{{LineItemType}}{{/if}}</td>
+        </tr>
+    {{/each}}
+</table>
+
+</body>
+
+
+</html>
