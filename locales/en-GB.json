@@ -1,0 +1,10 @@
+{
+  "messages": {
+    "INVOICE_NUMBER": "Ye Old Statement Numeral:",
+    "TAXES": "VAT:",
+    "ACCOUNT_NUMBER": "Thy Numeral of Account:",
+    "INVOICE_DATE": "Thy Date of Invoice:",
+    "DUE_STATEMENT": "{dueDate, date, long} is the day of due for thy payment.",
+    "FOOBAR": "en-GB FooBar"
+  }
+}

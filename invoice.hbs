@@ -5,26 +5,29 @@
 <body id="body">
 <header>
     <address>
-        <img alt="logo" src="{{embedable_image "images/WPE-logo.png"}}">
+        <img alt="logo" src="{{embeddableImage "images/WPE-logo.png"}}">
 
-        <p>Version 3<br />
-            Address 1<br />
-            Address 2<br />
+        <p>
+            {{foobar}}<br/>
+            {{> foobarpartial tagName="h1"}}<br/>
+            {{formatMessage (intlGet "messages.FOOBAR")}}<br/>
+            Address 1<br/>
+            Address 2<br/>
             City, ST 555555</p>
     </address>
 
     <table class="meta">
         <tr>
-            <th>Invoice Number: </th>
+            <th>{{formatMessage (intlGet "messages.INVOICE_NUMBER")}}</th>
             <td>{{invoice.invoiceNumber}}</td>
         </tr>
         <tr>
-            <th>Invoice Date:</th>
-            <td>{{invoice.billCycleRun.openDate}}</td>
+            <th>{{formatMessage (intlGet "messages.INVOICE_DATE")}}</th>
+            <td>{{formatDate invoice.occurredOn day="numeric" month="long" year="numeric"}}</td>
         </tr>
         <tr>
-            <th>Account Number:</th>
-            <td>{{invoice.billingAccount.accountNum}}</td>
+            <th>{{formatMessage (intlGet "messages.ACCOUNT_NUMBER")}}</th>
+            <td>{{invoice.billingAccount.accountNumDisplay}}</td>
         </tr>
         <tr>
             <th>Terms:</th>
@@ -40,22 +43,22 @@
 <article>
     <h1>Recipient</h1>
     <address>
-        <p><strong>Expedited Freightways, LLC</strong><br />
-            1214 Progressive Drive<br />
-            Suite 101<br />
-            Chesapeake, VA 23320<br />
+        <p><strong>Expedited Freightways, LLC</strong><br/>
+            1214 Progressive Drive<br/>
+            Suite 101<br/>
+            Chesapeake, VA 23320<br/>
             UNITED STATES</p>
 
-        <p><strong>Questions about your invoice?</strong><br />
-            Email: finance@wpengine.com<br />
-            Telephone: 1-510-844-3000 (option 5)<br />
+        <p><strong>Questions about your invoice?</strong><br/>
+            Email: finance@wpengine.com<br/>
+            Telephone: 1-510-844-3000 (option 5)<br/>
             For further information please refer to the NYK Motor Carrier Agreement located in your ChassisManager
             Account Profile under Terms and Conditions.</p>
 
-        <p><strong>For Electronic Funds Transfer:</strong><br />
-            Bank Name: Bank of Tokyo Mitsubishi New York,<br />
-            Beneficiary Name: NY NYK Line (NA) Inc.<br />
-            Routing Number: 026009632<br />
+        <p><strong>For Electronic Funds Transfer:</strong><br/>
+            Bank Name: Bank of Tokyo Mitsubishi New York,<br/>
+            Beneficiary Name: NY NYK Line (NA) Inc.<br/>
+            Routing Number: 026009632<br/>
             Account Number: 310067839</p>
     </address>
     <table class="title">
@@ -66,23 +69,23 @@
     <table class="balance">
         <tr>
             <th>Previous Balance</th>
-            <td><span data-prefix>$</span>1,777.79</td>
+            <td>{{formatNumber invoice.previousBalance style="currency" currency=invoice.currencyCode}}</td>
         </tr>
         <tr>
             <th>Payments & Credits Applied</th>
-            <td><span data-prefix>$</span>0.00</td>
+            <td>{{formatNumber invoice.statement.paymentsReceivedAmount style="currency" currency=invoice.currencyCode currencyDisplay="name"}}</td>
         </tr>
         <tr>
             <th>Payment Adjustments</th>
-            <td><span data-prefix>$</span>0.00</td>
+            <td>{{formatNumber invoice.adjustmentsTotalAmount style="currency" currency=invoice.currencyCode}}</td>
         </tr>
         <tr>
             <th>Total Current Invoice Activity</th>
-            <td><span data-prefix>$</span>629.31</td>
+            <td>{{formatNumber invoice.statement.totalCurrentCharges style="currency" currency=invoice.currencyCode}}</td>
         </tr>
         <tr class="total">
             <th>Balance</th>
-            <td><span data-prefix>$</span>2,407.10</td>
+            <td>{{formatNumber invoice.statement.totalAmountDue style="currency" currency=invoice.currencyCode  currencyDisplay="name"}}</td>
         </tr>
     </table>
     <table class="title">
@@ -95,12 +98,12 @@
             <th>Chassis Rental Charges</th>
             <td><span data-prefix>$</span>580.00</td>
         </tr>
-        <tr>                                                                  a
+        <tr>
             <th>Other Charges</th>
             <td><span data-prefix>$</span>0.00</td>
         </tr>
         <tr>
-            <th>Taxes</th>
+            <th>{{formatMessage (intlGet "messages.TAXES")}}</th>
             <td><span data-prefix>$</span>49.31</td>
         </tr>
         <tr class="total">
@@ -108,20 +111,20 @@
             <td><span data-prefix>$</span>629.31</td>
         </tr>
     </table>
-    <p class="payment-note">Payment due no later than 02/05/14</p>
+    <p class="payment-note">{{formatMessage (intlGet "messages.DUE_STATEMENT") dueDate=invoice.dueDate}}</p>
 </article>
 
 <aside>
     <h1>Remittance</h1>
     <header>
         <address>
-            <p>Expedited Freightways, LLC<br />
-                1214 Progressive Drive<br />
-                Suite 101<br />
-                Chesapeake, VA 23320<br />
-                UNITED STATES<br />
+            <p>Expedited Freightways, LLC<br/>
+                1214 Progressive Drive<br/>
+                Suite 101<br/>
+                Chesapeake, VA 23320<br/>
+                UNITED STATES<br/>
                 &nbsp;</p>
-            <img alt="logo" src="{{embedable_image "images/logo_tract.png"}}">
+            <img alt="logo" src="{{embeddableImage "images/logo_tract.png"}}">
         </address>
 
         <table class="meta">
@@ -152,9 +155,9 @@
         <p class="remit-note">Remit with this stub to:</p>
         <address>
             <p class="remit">
-                Generac<br />
-                Address 1<br />
-                Address 2<br />
+                Generac<br/>
+                Address 1<br/>
+                Address 2<br/>
                 City, ST 555555</p>
         </address>
     </article>

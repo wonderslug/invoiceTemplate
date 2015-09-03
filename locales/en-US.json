@@ -1,0 +1,18 @@
+{
+  "formats": {
+    "relative": {
+      "hours": {
+        "units": "hour",
+        "style": "numeric"
+      }
+    }
+  },
+  "messages": {
+    "INVOICE_NUMBER": "Invoice Number:",
+    "TAXES": "Taxes:",
+    "ACCOUNT_NUMBER": "Account Number:",
+    "INVOICE_DATE": "Invoice Date:",
+    "DUE_STATEMENT": "Payment due no later than {dueDate, date, medium}",
+    "FOOBAR": "en-US FooBar"
+  }
+}
